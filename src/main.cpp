@@ -11,7 +11,6 @@
 int main(int argc, char** argv) {
 
 	try {
-
 		DiffusionCoefficient D;
 		D.setBoxSize(NGRID);
 		D.setSpacing_pc((double) BOXSIZE / (double) NGRID);

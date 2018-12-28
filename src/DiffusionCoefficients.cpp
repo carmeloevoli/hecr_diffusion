@@ -270,11 +270,17 @@ void DiffusionCoefficient::buildMagneticField() {
 
 	std::cout << "  - Turbulent range: " << lMin / crpropa::pc << " - " << lMax / crpropa::pc << " pc" << std::endl;
 
-	double alpha = -11.0 / 3.0;
+	const double alpha = -11.0 / 3.0;
 
 	std::cout << "  - Spectral index, <B^2(k)> ~ k^n, n:  " << alpha << std::endl;
 
 	crpropa::initTurbulence(field, brms, lMin, lMax, alpha, 42, false, 0);
+
+	for (size_t i = 0; i < Nx; ++i)
+		for (size_t j = 0; j < Ny; ++j)
+			for (size_t k = 0; k < Nz; ++k) {
+				field->get(i, j, k) += crpropa::Vector3d(0, 0, b0);
+			}
 
 	if (doDumpGrid) {
 		crpropa::dumpGrid(field, magneticFieldFilename);

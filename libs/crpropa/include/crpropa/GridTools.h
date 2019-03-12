@@ -42,6 +42,8 @@ void scaleGrid(ref_ptr<ScalarGrid> grid, double a);
 /** Multiply all grid values by a given factor */
 void scaleGrid(ref_ptr<VectorGrid> grid, double a);
 
+#define CRPROPA_HAVE_FFTW3F
+
 #ifdef CRPROPA_HAVE_FFTW3F
 /**
  Create a random initialization of a turbulent field.

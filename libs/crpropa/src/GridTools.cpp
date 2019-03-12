@@ -81,7 +81,7 @@ double rmsFieldStrength(ref_ptr<ScalarGrid> grid) {
 	return std::sqrt(sumV2 / Nx / Ny / Nz);
 }
 
-//#ifdef CRPROPA_HAVE_FFTW3F
+#ifdef CRPROPA_HAVE_FFTW3F
 #include "fftw3.h"
 void initTurbulence(ref_ptr<VectorGrid> grid, double Brms, double lMin, double lMax, double alpha, int seed,
 		bool helicity, double H) {
@@ -269,7 +269,7 @@ void initTurbulence(ref_ptr<VectorGrid> grid, double Brms, double lMin, double l
 
 	scaleGrid(grid, Brms / rmsFieldStrength(grid)); // normalize to Brms
 }
-//#endif // CRPROPA_HAVE_FFTW3F
+#endif // CRPROPA_HAVE_FFTW3F
 
 void fromMagneticField(ref_ptr<VectorGrid> grid, ref_ptr<MagneticField> field) {
 	Vector3d origin = grid->getOrigin();
